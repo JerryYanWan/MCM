@@ -9,13 +9,16 @@ import argparse
 if __name__ == '__main__':
 
   parser = argparse.ArgumentParser(
-    description = "calculate the mean and variance from excel data")
+    description = \
+    "calculate the mean and variance from excel data")
   parser.add_argument('--excel',
                       help = 'load the excel file')
   parser.add_argument('--diff',
                       default = 0,
                       type = int,
-                      help = 'whether to calculate the time stamp or time, 0(time stamp) | 1(time)')
+                      help =
+      'whether to calculate the time stamp or time,' + \
+      ' 0(time stamp) | 1(time)')
   parser.add_argument('--col',
                       default = 0,
                       type = int,
@@ -26,7 +29,8 @@ if __name__ == '__main__':
 
   if args.diff == 0:
     dateSecond = []
-    print "calculate column %s, %s, diff time stamp" %(args.col, df.columns[args.col])
+    print "calculate column %s, %s, diff time stamp" \
+      %(args.col, df.columns[args.col])
     for d in date:
       dateSecond.append(d.minute*60 + d.second+d.microsecond/1e6)
     dateSecond = np.array(dateSecond, dtype='float')
@@ -34,7 +38,8 @@ if __name__ == '__main__':
     print "mean = %s, var = %s" % (c.mean(), c.var())
   else:
     dateSecond = []
-    print "calculate column %s, %s, interval time" %(args.col, df.columns[args.col])
+    print "calculate column %s, %s, interval time" \
+      %(args.col, df.columns[args.col])
     for d in date:
       if args.col == 7:
         dateSecond.append(d.hour*60. + d.minute + d.second/1e6)

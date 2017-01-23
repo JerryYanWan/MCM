@@ -8,7 +8,8 @@ import argparse
 if __name__ == '__main__':
 
   parser = argparse.ArgumentParser(
-    description = "calculate the average queue length and wait time")
+    description = "calculate the average" + \
+      "queue length and wait time")
   parser.add_argument('-k',
                       default = 1,
                       type = int,
@@ -29,10 +30,14 @@ if __name__ == '__main__':
   k = args.k
 
   rho = lambda1/mu1
-  sum1 = np.sum([math.pow(rho, i)/math.factorial(i) for i in np.arange(0, k-1)])
-  P0 = 1.0 / ((k/(k-rho))*(math.pow(rho, k)/ math.factorial(k)) + sum1)
+  sum1 = np.sum([math.pow(rho, i)/math.factorial(i) \
+         for i in np.arange(0, k-1)])
+  P0 = 1.0 / 
+      ((k/(k-rho))*(math.pow(rho, k)/ math.factorial(k)) + sum1)
   
-  L = P0 * (np.sum([math.pow(rho, i)*i/math.factorial(i) for i in np.arange(0, k-1)]) +
+  L = P0 * 
+    (np.sum([math.pow(rho, i)*i/math.factorial(i) \
+      for i in np.arange(0, k-1)]) +
     math.pow(rho, k+1)/(math.factorial(k-1) *math.pow(k-rho, 2)) +
     math.pow(rho, k)*k/(math.factorial(k-1)*(k-rho)))
 
