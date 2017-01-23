@@ -36,6 +36,9 @@ if __name__ == '__main__':
     dateSecond = []
     print "calculate column %s, %s, interval time" %(args.col, df.columns[args.col])
     for d in date:
-      dateSecond.append(d.minute*60 + d.second+d.microsecond/1e6)
+      if args.col == 7:
+        dateSecond.append(d.hour*60. + d.minute + d.second/1e6)
+      else:
+        dateSecond.append(d.minute*60 + d.second+d.microsecond/1e6)
     dateSecond = np.array(dateSecond, dtype='float')
     print "mean = %s, var = %s" % (dateSecond.mean(), dateSecond.var())
